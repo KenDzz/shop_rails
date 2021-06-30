@@ -1,0 +1,78 @@
+<% if notice %>
+    <script>
+      Swal.fire({
+        icon: 'success',
+        title: '<%= notice %>',
+        showConfirmButton: false,
+        timer: 1500
+    })
+    </script>
+<% end %>
+<% if session[:user_id] %>
+    <%= link_to 'Edit', edit_cart_path(@cart) %> |
+    <%= link_to 'Back', carts_path %>
+<% end %>
+
+<div class="step-checkout p-3 mb-5 rounded mt-4">
+    <p class="h5 text-cart-no-product ml-2 text-uppercase ">Giỏ hàng</p>
+    <div class="d-flex bd-highlight">
+      <div class="p-2 bd-highlight shadow p-3 mb-5 bg-white rounded product-cart-shopping">
+        <% @cart.line_items.each do |item| %>    
+            <div class="row">
+                <div class="col-5">
+                    <img src="https://lh3.googleusercontent.com/f-jtgKC-EMMuSFHHd8KIz6ZLjnCxykI56cQhpf9ZjJ2KNG_2eDLvRCgARWwj1mKfNak_2dsrS8euNDt16qno30wnwgXt2M5I=w185" class="img-cart-shopping">
+                </div>
+                <div class="col-5 mt-2">
+                    <p class="name-product-cart"><%= item.product.title %></p>
+                    <span class="price-light"><span class="price-cart-shopping"><%= number_to_currency(item.total_price) %></span><span class="vnd ml-1">vnđ</span></span>
+                </div>
+                <div class="col-2 mt-2">
+                    <div class="number-input-number-cart-product text-center">
+                        <span class="minus">-</span>
+                        <input type="text-number-cart-product" value="<%= item.quantity %>"/>
+                        <span class="plus">+</span>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        <% end %>
+    </div>
+    <div class="p-2 bd-highlight shadow p-3 mb-5 bg-white rounded ml-2 product-cart-price">
+        <div class="row shopping-total-price">
+            <div class="col-6">
+                <span class="price-light-total">Đơn hàng: </span>
+            </div>
+            <div class="col-6 text-right">
+                <span class="price-cart-shopping"><%= number_to_currency(@cart.total_price) %></span>
+                <span class="vnd text-danger">vnđ</span>
+            </div>
+        </div>
+        <div class="row shopping-total-price">
+            <div class="col-6">
+                <span class="price-light-total">Phí vận chuyển: </span>
+            </div>
+            <div class="col-6 text-right">
+                <span class="price-cart-shopping">00.000</span>
+                <span class="vnd text-danger">vnđ</span>
+            </div>
+        </div>
+        <div class="row shopping-total-price">
+            <div class="col-6">
+                <span class="price-light-total">Tổng tiền: </span>
+            </div>
+            <div class="col-6 text-right">
+                <span class="price-cart-shopping"><%= number_to_currency(@cart.total_price) %></span>
+                <span class="vnd text-danger">vnđ</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 mt-4">
+                <%= button_to 'Tiếp tục', new_order_path, :method => :get , :class => "btn btn-outline-success w-100" %>
+            </div>
+            <div class="col-sm-12 mt-4">
+                <%= button_to 'Xóa giỏ hàng', @cart, :method => :delete,data: {:confirm => 'Are you sure?'}, :class => "btn btn-outline-danger w-100" %>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

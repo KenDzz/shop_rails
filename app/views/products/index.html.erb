@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<% if session[:user_id] %>
+  <div class="text-center p-2 mt-2">
+    <%= link_to 'Thêm sản phẩm', new_product_path , :class => "btn btn-outline-success"%>
+  </div>
+<% end %>
+
+  <div class="option-price">
+    <div class="owl-carousel owl-theme option-product-detail text-center">
+      <div class="item option-item">
+        <a href="?sort=down100" class="btn btn-outline-danger">Dưới 100.000đ</a>
+      </div>
+      <div class="item option-item">
+        <a href="?sort=100-200" class="btn btn-outline-danger">Từ 100.000đ đến 200.000đ</a>
+      </div> 
+      <div class="item option-item">
+        <a href="?sort=200-300" class="btn btn-outline-danger">Từ 200.000đ đến 300.000đ</a>
+      </div>
+      <div class="item option-item">
+        <a href="?sort=300-500" class="btn btn-outline-danger">Từ 300.000đ đến 500.000đ</a>
+      </div>
+      <div class="item option-item">
+        <a href="?sort=up500" class="btn btn-outline-danger">Trên 500.000đ</a>
+      </div>
+    </div>
+  </div>
+  <div class="option-product">
+    <div class="owl-carousel owl-theme option-product-detail text-center">
+      <div class="item option-item">
+        <a href="?sort=new" class="btn btn-outline-info">Mới nhất</a>
+      </div>
+      <div class="item option-item">
+        <a href="?sort=discount" class="btn btn-outline-info">Khuyến mãi</a>
+      </div> 
+      <div class="item option-item">
+        <a href="?sort=desc" class="btn btn-outline-info">Giá giảm dần</a>
+      </div>
+      <div class="item option-item">
+        <a href="?sort=asc" class="btn btn-outline-info">Giá tăng dần</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="list-product-detail">
+    <div class="row">
+      <% @products.each do |product| %>
+        <div class="col-sm-3 mt-2">
+        <div class="product-item text-center product-detail-item">
+         <% if product.discount != 0%><span class="ribbon4">-<%= product.discount %>%</span><% end %>
+            <img src="<%= product.image_url %>" class="img-product-item">
+            <p class="product-name"><%= link_to product.title, product %></p>
+            <p class="product-price">
+              <%= product.price %><span class="vnd"><%= @original_url%>đ</span>
+              <% if product.discount != 0%>
+                <span class="discount-price">
+                  <%=
+                      product.price - (product.price * (product.discount/100))
+                  %>
+                  <span class="vnd">đ</span>
+                </span>
+              <% end %>
+            </p>
+            <%= button_to 'Thêm vào giỏ hàng', line_items_path(:product_id => product), :class => "btn btn-danger" %>
+            <% if session[:user_id] %>
+            <%= link_to 'Sửa', edit_product_path(product), :class => "btn btn-info mt-2" %>
+            <%= link_to 'Xóa', product, method: :delete, data: { confirm: 'Vui lòng xác nhận để xóa?' } , :class => "btn btn-danger mt-2"%>
+            <% end %>
+          </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+<%= will_paginate @products %>

@@ -1,0 +1,43 @@
+<div class="depot_form">
+    <% if flash[:alert] %>
+        <script>
+          Swal.fire({
+            icon: 'error',
+            title: '<%= flash[:alert] %>',
+            showConfirmButton: false,
+            timer: 1500
+        })
+        </script>
+    <% end %>
+  
+    <% if notice %>
+        <script>
+          Swal.fire({
+            icon: 'error',
+            title: '<%= notice %>',
+            showConfirmButton: false,
+            timer: 2000
+        })
+        </script>
+    <% end %>
+</div>
+    <div class="login-form shadow p-3 mb-5 bg-white rounded form-group" style="line-height: 50px;">
+        <div class="text-center">
+            <%= image_tag("logo_2.png", :class => "img-logo-login")%>
+        </div>
+        <%= form_tag '/login' do %>
+            <p class="h4 title-login">Đăng Nhập Hệ Thống</p>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Tài khoản</label>
+                <%= text_field_tag :name, params[:name], class: 'form-control', placeholder: "Tài khoản hoặc email"%>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Mật khẩu</label>
+                <%= password_field_tag :password, params[:password], class: 'form-control', placeholder: "Mật khẩu phải tối thiểu 6 ký tự" %>
+            </div>
+            <div class="error-login">
+                <span class="text-danger"></span>
+            </div>
+            <button type="submit" name="loginSubmit" id="login" class="btn btn-outline-danger mb-4 mt-4">Đăng nhập</button>
+        <% end %>
+    </div>

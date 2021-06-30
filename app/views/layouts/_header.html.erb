@@ -1,0 +1,111 @@
+<!-- Navbar Fixed Bottom Mobile -->
+	<div class="navbar-mobile text-center">
+		<div class="row">
+			<div class="col-3 mt-2">
+				<i class="fas fa-home" style="font-size: 20px; color: #dc3545;"></i>
+				<a href="#">Trang Chủ</a>
+			</div>
+			<div class="col-3 mt-2">
+				<i class="fas fa-th-list" style="font-size: 20px; color: #dc3545;"></i>
+				<button class="btn-nav-category-mobile" aria-expanded="true" type="button" aria-label="close menu">Danh Mục</button>
+			</div>
+			<div class="col-3 mt-2">
+				<i class="fas fa-cart-arrow-down" style="font-size: 20px; color: #dc3545;"></i>
+				<a href="#">Giỏ Hàng</a>
+			</div>
+			<div class="col-3 mt-2">
+				<i class="fas fa-user" style="font-size: 20px; color: #dc3545;"></i>
+				<a href="#">Tài khoản</a>
+			</div>
+		</div>
+	</div>
+	<!-- End Navbar Fixed Bottom Moblie -->
+	<!-- Navbar -->
+	<header class="bg-white">
+		<div class="container">
+			<div class="row nav-menu">
+				<div class="col-12">
+					<div class="d-flex flex-column">
+						<div class="p-3 bd-highlight nav-top">
+							<div class="row">
+								<div class="col-1 logo-header">
+									<a href="/">
+										<%= image_tag("logo_3.png", :class => "logo-website")%>
+									</a>
+								</div>
+								<div class="col-sm-5 mt-2">
+									<div class="searchbar ml-2">
+										<%= form_with(url: '/', method: 'get', local: true) do %>
+										  <%= text_field_tag :search, nil, class: 'search_input ml-2', placeholder: "Tìm kiếm sản phẩm" %>
+											<%= button_tag type: 'submit', class: "search_icon" do %>
+											    <i class="fas fa-search" aria-hidden="true"></i>
+											<% end %>
+										<% end %>
+									</div>
+								</div>
+								<div class="col-sm-6 mt-2">
+									<div class="d-flex flex-row ml-4 form-nav-user justify-content-end">
+										<% if session[:user_id] %>
+										<div class="icon-user bd-highlight">
+											<i class="far fa-user-circle" style="font-size: 40px; color: #fff;"></i>
+										</div>
+										<div class="button-user bd-highlight">
+								            <%= link_to 'Users', '/users' %>
+								            <%= button_to 'Logout', '/logout', :method => :delete , :class => "btn btn-danger"%>
+										</div>
+										<% end %>
+										<div class="icon-cart bd-highlight ml-5">
+											<a href="/carts/24" class="button-cart-a">
+												<i class="fas fa-cart-plus" style="font-size: 40px; color: #fff;"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="p-3 bd-highlight nav-bottom">
+						<div class="row">
+							<div class="col-sm-4">
+								<!-- Menu -->
+								<nav class="nav">
+						          <button class="nav__toggle" aria-expanded="false" type="button">
+						            <i class="fas fa-bars"></i> Danh mục sản phẩm
+						          </button>
+						          <ul class="nav__wrapper">
+						            <li class="nav__item"><a href="#">Thịt cá - Hải sản</a></li>
+						            <li class="nav__item"><a href="#">Rau củ</a></li>
+						            <li class="nav__item"><a href="#">Gia vị - Đồ khô</a></li>
+						            <li class="nav__item"><a href="#">Đồ đông lạnh</a></li>
+						            <li class="nav__item"><a href="#">Đồ uống - khải khát</a></li>
+						            <li class="nav__item"><a href="#">Bánh kẹo</a></li>
+						            <li class="nav__item"><a href="#">Hóa phẩm</a></li>
+						          </ul>
+						        </nav>
+						        <!-- End Menu -->
+							</div>
+							<div class="col-sm-8 mt-2">
+								<div class="d-flex flex-row justify-content-end">
+										<div class="icon-store bd-highlight">
+											<i class="fas fa-store" style="font-size: 40px; color: #e74c3c;"></i>
+										</div>
+										<div class="button-store bd-highlight">
+											<a href="#" class="button-store-a">Tìm siêu thị <p style="color: black; font-size: 13px;">(Tìm siêu thị gần bạn nhất)</p></a>
+										</div>
+										<div class="icon-phone bd-highlight ml-5">
+											<i class="fas fa-phone-volume" style="font-size: 40px; color: #e74c3c;"></i>
+										</div>
+										<div class="button-phone bd-highlight">
+											<a href="#" class="button-phone-a">1800 555 444 <p style="color: black; font-size: 13px;">Gọi từ 8h00 - 21h30</p></a>
+
+										</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>

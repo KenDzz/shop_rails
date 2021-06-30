@@ -1,0 +1,11 @@
+<% if session[:user_id] %>
+<h1>Thêm sản phẩm mới</h1>
+
+<%= render 'form', product: @product %>
+
+<%= link_to 'Back', products_path ,class: "btn btn-danger w-100"%>
+<% else %>
+  <script type="text/javascript">
+    window.location.href="/";
+  </script>
+<% end %>

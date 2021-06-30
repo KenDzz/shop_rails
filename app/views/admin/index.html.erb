@@ -1,0 +1,13 @@
+<%= render "layouts/navbaradmin" %>
+
+	<div class="col-md-8">
+		<div class="card mb-3 shadow p-3 mb-5 bg-white rounded">
+			<div class="card-body">
+				<div class="text-center">
+					<p>Thời hiện tại: <%= @time %></p>
+					<p>Tổng số đơn hàng: <%= pluralize(@total_orders, "Đơn") %></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+<%= render "layouts/navbaradmin" %>
+
+<div class="col-md-8">
+  <%= link_to 'New User', new_order_path, class: "btn btn-success" %>
+  <table class="table table-dark mt-2">
+    <thead>
+      <tr>
+        <th scope="col">Tài khoản</th>
+        <th scope="col">Địa Chỉ</th>
+        <th scope="col">Email</th>
+        <th scope="col">Payment</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+        <th scope="row"><%= order.name %></th>
+        <td><%= order.address %></td>
+        <td><%= order.email %></td>
+        <td><%= order.pay_type %></td>
+        <td>
+          <%= link_to 'Xem', order , class: "btn btn-success mt-2"%>
+          <%= link_to 'Sửa', edit_order_path(order), class: "btn btn-success mt-2" %>
+          <%= link_to 'Xóa', order, method: :delete , class: "btn btn-danger mt-2"%>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
+<p><%= will_paginate @orders %></p>

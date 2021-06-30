@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<%= render "layouts/navbaradmin" %>
+<div class="col-md-8">
+  <div class="card mb-3 shadow p-3 mb-5 bg-white rounded">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Tài khoản</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+         <%= @user.name %></div>
+       </div>
+       <hr>
+       <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Mật khẩu</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          <%= @user.hashed_password %>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Salt</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          <%= @user.salt %></div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center p-2 mt-2">
+      <%= link_to 'Edit', edit_user_path(@user) , class: "btn btn-info" %>
+      <%= link_to 'Back', users_path , class: "btn btn-danger"%>
+    </div>
+  </div>
+</div>
+
+<div class="fb-comments" data-href="http://orgavina.com/" data-width="" data-numposts="5"></div>

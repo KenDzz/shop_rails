@@ -1,0 +1,223 @@
+<p id="notice"><%= notice %></p>
+<% if session[:user_id] %>
+	<div class="text-center p-2 mt-2">
+		<%= link_to 'Edit', edit_product_path(@product) , :class => "btn btn-outline-success" %> |
+		<%= link_to 'Back', products_path , :class => "btn btn-outline-danger" %>
+	</div>
+<% end %>
+	<div class="product-detail-page">
+		<!-- breadcrumb -->
+		<nav aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+		    <li class="breadcrumb-item"><a href="#">THỊT - HẢI SẢN - TRỨNG</a></li>
+		    <li class="breadcrumb-item active" aria-current="page">Gà viên Hoa Doanh 500g</li>
+		  </ol>
+		</nav>
+		<!-- End breadcrumb -->
+
+		<!-- Product detail -->
+
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="product__carousel">
+					<div class="swiper-container gallery-top">
+						<div class="swiper-wrapper text-center"> 
+							<div class="swiper-slide easyzoom easyzoom--overlay">
+								<a href="<%= @product.image_url %>">
+									<img src="<%= @product.image_url %>" class="img-product-detail"/>
+								</a>
+							</div>
+							<div class="swiper-slide easyzoom easyzoom--overlay">
+								<a href="<%= @product.image_url %>">
+									<img src="<%= @product.image_url1 %>" class="img-product-detail"/>
+								</a>
+							</div>
+							<div class="swiper-slide easyzoom easyzoom--overlay">
+								<a href="<%= @product.image_url2 %>">
+									<img src="<%= @product.image_url2 %>" class="img-product-detail"/>
+								</a>
+							</div>
+						</div>
+						<!-- Add Arrows -->
+						<div class="swiper-button-next swiper-button-white"></div>
+						<div class="swiper-button-prev swiper-button-white"></div>
+					</div>
+					<div class="swiper-container gallery-thumbs">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<img src="<%= @product.image_url %>" class="img-thumb-product-detail">
+							</div>
+							<div class="swiper-slide">
+								<img src="<%= @product.image_url1 %>" class="img-thumb-product-detail">
+							</div>
+							<div class="swiper-slide">
+								<img src="<%= @product.image_url2 %>" class="img-thumb-product-detail">
+							</div>
+						</div>
+					</div>
+					<!-- Swiper and EasyZoom plugins end -->
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="title-name-product-detail">
+					<p><%= @product.title%></p>
+				</div>
+				<div class="id-product-detail">
+					<p>MSP: 10620244</p>
+				</div>
+				<div class="price-product-detail">
+					<p class="text-danger"><%= @product.price %>
+						<span class="vnd">đ</span>
+						<span class="discount-price ml-2">
+							80.000
+							<span class="vnd">đ</span>
+						</span>
+					</p>
+				</div>
+				<div class="boxkm">
+					<div class="postext">Thông báo</div>
+					<div class="infokm">
+						<div class="promodetail">
+							<div class="option">
+								<%= image_tag("bill-80x80.png", :size => "40") %>
+								<p>Tình trạng hàng: <span class="text-success">Còn hàng</span></p>
+							</div>
+							<div class="option">
+								<%= image_tag("bill-80x80.png", :size => "40") %>
+								<p>Khuyến mãi: Giảm giá 20.000đ</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="row btn-product-detail">
+					<div class="col-sm-6">
+						<%= button_to 'Thêm vào giỏ hàng', line_items_path(:product_id => @product), :class => "btn btn-outline-danger mt-2",:remote => true %>
+					</div>
+					<div class="col-sm-6">
+						<%= button_to 'Mua ngay', line_items_path(:product_id => @product), :class => "btn btn-danger mt-2" %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Product suggestions -->
+		<div class="row mt-2">
+			<div class="col-8">
+				<div class="bd-callout bd-callout-danger">
+					<span class="title-name-product ml-2">Sản phẩm tương tự</span>
+				</div>
+			</div>
+		</div>
+		<div class="owl-carousel owl-theme product-detail text-center">
+		    <div class="item item-owl-product">
+		    	<div class="product-item">
+		    		<img src="https://lh3.googleusercontent.com/z_GHlWbplcyPGnPswNXaGGZAkYAwc6vugZZsrnX7R5JLy5O9Dk0VuEEydwFEm8FHHlPPBjeQ9L5_578omi0BmtQIlH6cj7URwA=w185" class="img-product-item">
+		    		<p class="product-name">Gà viên Hoa Doanh 500g</p>
+		    		<p class="product-price">
+		    			60.000<span class="vnd">đ</span> 
+		    			<span class="discount-price">
+		    				80.000
+		    				<span class="vnd">đ</span>
+		    			</span>
+		    		</p>
+		    		<button class="btn btn-danger">Thêm vào giỏ hàng</button>
+		    	</div>
+		    </div>
+		    <div class="item item-owl-product">
+		    	<div class="product-item">
+		    		<img src="https://lh3.googleusercontent.com/z_GHlWbplcyPGnPswNXaGGZAkYAwc6vugZZsrnX7R5JLy5O9Dk0VuEEydwFEm8FHHlPPBjeQ9L5_578omi0BmtQIlH6cj7URwA=w185" class="img-product-item">
+		    		<p class="product-name">Gà viên Hoa Doanh 500g</p>
+		    		<p class="product-price">
+		    			60.000<span class="vnd">đ</span> 
+		    			<span class="discount-price">
+		    				80.000
+		    				<span class="vnd">đ</span>
+		    			</span>
+		    		</p>
+		    		<button class="btn btn-danger">Thêm vào giỏ hàng</button>
+		    	</div>
+		    </div>
+		    <div class="item item-owl-product">
+		    	<div class="product-item">
+		    		<img src="https://lh3.googleusercontent.com/z_GHlWbplcyPGnPswNXaGGZAkYAwc6vugZZsrnX7R5JLy5O9Dk0VuEEydwFEm8FHHlPPBjeQ9L5_578omi0BmtQIlH6cj7URwA=w185" class="img-product-item">
+		    		<p class="product-name">Gà viên Hoa Doanh 500g</p>
+		    		<p class="product-price">
+		    			60.000<span class="vnd">đ</span> 
+		    			<span class="discount-price">
+		    				80.000
+		    				<span class="vnd">đ</span>
+		    			</span>
+		    		</p>
+		    		<button class="btn btn-danger">Thêm vào giỏ hàng</button>
+		    	</div>
+		    </div>
+		    <div class="item item-owl-product">
+		    	<div class="product-item">
+		    		<img src="https://lh3.googleusercontent.com/z_GHlWbplcyPGnPswNXaGGZAkYAwc6vugZZsrnX7R5JLy5O9Dk0VuEEydwFEm8FHHlPPBjeQ9L5_578omi0BmtQIlH6cj7URwA=w185" class="img-product-item">
+		    		<p class="product-name">Gà viên Hoa Doanh 500g</p>
+		    		<p class="product-price">
+		    			60.000<span class="vnd">đ</span> 
+		    			<span class="discount-price">
+		    				80.000
+		    				<span class="vnd">đ</span>
+		    			</span>
+		    		</p>
+		    		<button class="btn btn-danger">Thêm vào giỏ hàng</button>
+		    	</div>
+		    </div>
+		    <div class="item item-owl-product">
+		    	<div class="product-item">
+		    		<img src="https://lh3.googleusercontent.com/SntRogZ28i5PCvsJcHAP6RYbOx9czM-W0YFULgp8NeuoRfCIjLxlJaP05IpTNczB7HzyjE__zUGMWM6sTML2UowL45xO9vZ_pQ=w185" class="img-product-item">
+		    		<p class="product-name">Gà viên Hoa Doanh 500g</p>
+		    		<p class="product-price">
+		    			60.000<span class="vnd">đ</span> 
+		    			<span class="discount-price">
+		    				80.000
+		    				<span class="vnd">đ</span>
+		    			</span>
+		    		</p>
+		    		<button class="btn btn-danger">Thêm vào giỏ hàng</button>
+		    	</div>
+		    </div>
+		    <div class="item item-owl-product">
+		    	<div class="product-item">
+		    		<img src="https://lh3.googleusercontent.com/f-jtgKC-EMMuSFHHd8KIz6ZLjnCxykI56cQhpf9ZjJ2KNG_2eDLvRCgARWwj1mKfNak_2dsrS8euNDt16qno30wnwgXt2M5I=w185" class="img-product-item">
+		    		<p class="product-name">Gà viên Hoa Doanh 500g</p>
+		    		<p class="product-price">
+		    			60.000<span class="vnd">đ</span> 
+		    			<span class="discount-price">
+		    				80.000
+		    				<span class="vnd">đ</span>
+		    			</span>
+		    		</p>
+		    		<button class="btn btn-danger">Thêm vào giỏ hàng</button>
+		    	</div>
+		    </div>
+		</div>
+		<!-- End Product suggestions -->
+
+		<!-- Info Product -->
+		<div class="row mt-2">
+			<div class="col-8">
+				<div class="bd-callout bd-callout-danger">
+					<span class="title-name-product ml-2">Thông tin sản phẩm</span>
+				</div>
+			</div>
+		</div>
+		<div class="info-product-detail">
+			<%= @product.description.html_safe %>
+		</div>
+		<!-- End Product -->
+		<div class="row mt-2">
+			<div class="col-8">
+				<div class="bd-callout bd-callout-danger">
+					<span class="title-name-product ml-2">Bình luận</span>
+				</div>
+			</div>
+		</div>
+		<div class="fb-comments" data-href="http://orgavina.com/" data-width="100%" data-numposts="5"></div>
+		<!-- End Product Detail -->
+	</div>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=553253088944677&autoLogAppEvents=1" nonce="1iOGxpNQ"></script>

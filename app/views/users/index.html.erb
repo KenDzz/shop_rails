@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<%= render "layouts/navbaradmin" %>
+
+<div class="col-md-8">
+  <%= link_to 'New Order', new_user_path, class: "btn btn-success" %>
+  <table class="table table-dark mt-2">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tài khoản</th> 
+        <th scope="col">Mật khẩu</th>
+        <th scope="col">Salt</th>
+        <th scope="col">Option</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <th scope="row">1</th>
+        <td><%= user.name %></td>
+        <td><%= user.hashed_password %></td>
+        <td><%= user.salt %></td>
+        <td>
+          <%= link_to 'Xem', user , class: "btn btn-success mt-2"%>
+          <%= link_to 'Sửa', edit_user_path(user), class: "btn btn-success mt-2" %>
+          <%= link_to 'Xóa', user, method: :delete, data: { confirm: 'Vui lòng xác nhận?' } , class: "btn btn-danger mt-2"%>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
